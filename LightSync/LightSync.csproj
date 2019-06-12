@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <UserSecretsId>dotnet-LightSync-E76FA53B-F40C-451C-A4D8-6E09BF553310</UserSecretsId>
+    <Version>1.0.0.0</Version>
+    <Authors>AndrewBabbitt97</Authors>
+    <Company />
+    <ApplicationIcon>Icon.ico</ApplicationIcon>
+    <OutputType>WinExe</OutputType>
+    <StartupObject />
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>../bin/Debug/</OutputPath>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>../bin/Release/</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.0.0-preview5.19227.9" />
+    <PackageReference Include="Microsoft.Extensions.Logging.EventLog" Version="3.0.0-preview5.19227.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LightSync.Core\LightSync.Core.csproj" />
+    <ProjectReference Include="..\LightSync.Providers.Asus\LightSync.Providers.Asus.csproj" />
+    <ProjectReference Include="..\LightSync.Providers.Corsair\LightSync.Providers.Corsair.csproj" />
+    <ProjectReference Include="..\LightSync.SettingsServices\LightSync.SettingsServices.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Icon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>
