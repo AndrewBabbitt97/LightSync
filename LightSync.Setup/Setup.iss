@@ -1,6 +1,6 @@
 [Setup]
 AppName=Light Sync
-AppVersion=1.0.0.0
+AppVersion=1.0.0.1
 WizardStyle=modern
 DefaultDirName={autopf}\LightSync
 DefaultGroupName=LightSync
