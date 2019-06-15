@@ -28,7 +28,6 @@ namespace LightSync
         /// <param name="args">The command line arguments</param>
         public static void Main(string[] args)
         {
-            Directory.SetCurrentDirectory(@"C:\Users\Andrew\source\repos\LightSync\bin\Release\netcoreapp3.0\publish");
             var mutex = new Mutex(true, "LightSync", out var result);
 
             if (!result)

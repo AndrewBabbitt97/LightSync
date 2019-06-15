@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <UserSecretsId>dotnet-LightSync-E76FA53B-F40C-451C-A4D8-6E09BF553310</UserSecretsId>
-    <Version>1.0.0.0</Version>
+    <Version>1.0.0.1</Version>
     <Authors>AndrewBabbitt97</Authors>
     <Company />
     <ApplicationIcon>Icon.ico</ApplicationIcon>

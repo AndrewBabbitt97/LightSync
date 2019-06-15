@@ -24,6 +24,9 @@ namespace LightSync.Config
                 Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData),
                 "LightSync");
 
+            if (!Directory.Exists(contentRoot))
+                Directory.CreateDirectory(contentRoot);
+
             SettingsService = new SettingsService(contentRoot, false);
         }
     }
