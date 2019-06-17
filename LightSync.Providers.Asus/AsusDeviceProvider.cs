@@ -1,6 +1,6 @@
 ﻿using System.Threading;
 using System.Collections.Generic;
-using System.ServiceProcess;
+using System.Diagnostics;
 using AuraServiceLib;
 using LightSync.Core;
 
@@ -32,11 +32,6 @@ namespace LightSync.Providers.Asus
         private IAuraSdk _sdk;
 
         /// <summary>
-        /// The lighting service
-        /// </summary>
-        private ServiceController _lightingService;
-
-        /// <summary>
         /// If the provider is in exclusive mode
         /// </summary>
         private bool inExcluseMode;
@@ -49,7 +44,6 @@ namespace LightSync.Providers.Asus
             Name = "ASUS";
             _devices = new List<AsusDevice>();
             _sdk = new AuraSdk();
-            _lightingService = new ServiceController("LightingService");
 
             inExcluseMode = false;
         }
@@ -72,14 +66,12 @@ namespace LightSync.Providers.Asus
         /// </summary>
         public void PerformHealthCheck()
         {
-            _lightingService.Refresh();
-            var lightingServiceRunning = _lightingService.Status == ServiceControllerStatus.Running;
+            var lightingServiceRunning = Process.GetProcessesByName("LightingService").Length != 0;
 
             while (!lightingServiceRunning)
             {
                 Thread.Sleep(10000);
-                _lightingService.Refresh();
-                lightingServiceRunning = _lightingService.Status == ServiceControllerStatus.Running;
+                lightingServiceRunning = Process.GetProcessesByName("LightingService").Length != 0;
             }
         }
 

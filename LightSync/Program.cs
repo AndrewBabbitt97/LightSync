@@ -2,6 +2,8 @@ using System;
 using System.IO;
 using System.Diagnostics;
 using System.Threading;
+using System.Security.AccessControl;
+using System.Security.Principal;
 using System.Runtime.InteropServices;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.DependencyInjection;
@@ -55,10 +57,19 @@ namespace LightSync
                 "LightSync");
 
             if (!Directory.Exists(contentRoot))
-                Directory.CreateDirectory(contentRoot);
+            {
+                var directoryInfo = new DirectoryInfo(contentRoot);
+                directoryInfo.Create();
+                var directorySecurity = new DirectorySecurity(contentRoot, AccessControlSections.All);
+                var identity = new SecurityIdentifier(WellKnownSidType.WorldSid, null);
+                var rule = new FileSystemAccessRule(identity, FileSystemRights.FullControl, InheritanceFlags.ObjectInherit | InheritanceFlags.ContainerInherit, PropagationFlags.NoPropagateInherit, AccessControlType.Allow);
+                directorySecurity.AddAccessRule(rule);
+                directoryInfo.SetAccessControl(directorySecurity);
+            }
 
             return Host.CreateDefaultBuilder(args)
                 .UseContentRoot(contentRoot)
+                .UseWindowsService()
                 .ConfigureLightSync(lightsync =>
                 {
                     lightsync.UseCorsair();

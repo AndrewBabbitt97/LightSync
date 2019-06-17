@@ -57,6 +57,10 @@ namespace LightSync
         /// <returns>A task</returns>
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
+            await Task.Delay(1, stoppingToken);
+
+            _lightSync.Initialize();
+
             _settings.Settings.AvailableDevices.Clear();
 
             foreach (var provider in _lightSync.DeviceProviders)
@@ -70,6 +74,8 @@ namespace LightSync
             _settings.Save();
 
             _healthCheckTimer.Start();
+
+            _logger.LogInformation("LightSync started successfully...");
 
             while (!stoppingToken.IsCancellationRequested)
             {

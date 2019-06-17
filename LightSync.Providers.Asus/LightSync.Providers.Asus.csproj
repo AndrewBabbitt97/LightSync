@@ -23,8 +23,4 @@
     </COMReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="System.ServiceProcess.ServiceController" Version="4.6.0-preview5.19224.8" />
-  </ItemGroup>
-
 </Project>

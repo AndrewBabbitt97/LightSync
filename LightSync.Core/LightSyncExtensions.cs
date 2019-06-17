@@ -21,8 +21,6 @@ namespace LightSync.Core
 
             lightSyncDelegate(lightSync);
 
-            lightSync.Initialize();
-
             return builder.ConfigureServices(services =>
             {
                 services.AddSingleton<ILightSyncService>(lightSync);
