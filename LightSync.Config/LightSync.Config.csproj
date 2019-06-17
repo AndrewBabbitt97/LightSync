@@ -4,8 +4,9 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <UseWPF>true</UseWPF>
-    <Version>1.0.0.2</Version>
+    <Version>1.0.0.3</Version>
     <ApplicationIcon>Icon.ico</ApplicationIcon>
+    <Authors>AndrewBabbitt97</Authors>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

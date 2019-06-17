@@ -22,10 +22,13 @@ namespace LightSync.Config
         {
             var contentRoot = Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData),
-                "LightSync");
+                "Light Sync");
 
             if (!Directory.Exists(contentRoot))
-                Directory.CreateDirectory(contentRoot);
+            {
+                MessageBox.Show("The Light Sync service is not running. Please start the service before trying to configure.");
+                Environment.Exit(1);
+            }
 
             SettingsService = new SettingsService(contentRoot, false);
         }

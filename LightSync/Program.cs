@@ -54,7 +54,7 @@ namespace LightSync
         {
             var contentRoot = Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData),
-                "LightSync");
+                "Light Sync");
 
             if (!Directory.Exists(contentRoot))
             {
