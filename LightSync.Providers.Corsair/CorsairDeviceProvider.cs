@@ -57,7 +57,7 @@ namespace LightSync.Providers.Corsair
 
             while (!cueRunning)
             {
-                Thread.Sleep(10000);
+                Thread.Sleep(1000);
                 cueRunning = Process.GetProcessesByName("iCUE").Length != 0;
             }
 
@@ -68,7 +68,7 @@ namespace LightSync.Providers.Corsair
                 error == CorsairError.CE_ProtocolHandshakeMissing)
             {
                 CUESDK.CorsairPerformProtocolHandshake();
-                Thread.Sleep(10000);
+                Thread.Sleep(1000);
                 error = CUESDK.CorsairGetLastError();
             }
         }

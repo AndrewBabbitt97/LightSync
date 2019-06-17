@@ -24,8 +24,10 @@ Root: HKLM; SubKey: "SOFTWARE\Microsoft\Windows\CurrentVersion\Run"; ValueType: 
 Name: "{group}\Light Sync"; Filename: "{app}\LightSync.Config.exe"; WorkingDir: "{app}"
 
 [Run]
-Filename: "{app}\LightSync.exe"; StatusMsg: "Starting Light Sync..."; Flags: nowait
+Filename: "{sys}\sc.exe"; Parameters: "create LightSync start=auto binpath=""{app}\LightSync.exe"""; StatusMsg: "Installing Light Sync Service..."; Flags: runhidden
+Filename: "{sys}\sc.exe"; Parameters: "start LightSync"; StatusMsg: "Starting Light Sync Service..."; Flags: runhidden
 
 [UninstallRun]
-Filename: "{cmd}"; Parameters: "/C""taskkill /im LightSync.exe /f /t"
+Filename: "{sys}\sc.exe"; Parameters: "stop LightSync"; StatusMsg: "Stopping Light Sync Service..."; Flags: runhidden
+Filename: "{sys}\sc.exe"; Parameters: "delete LightSync"; StatusMsg: "Uninstalling Light Sync Service..."; Flags: runhidden
 Filename: "{cmd}"; Parameters: "/C""taskkill /im LightSync.Config.exe /f /t"

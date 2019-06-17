@@ -70,7 +70,7 @@ namespace LightSync.Providers.Asus
 
             while (!lightingServiceRunning)
             {
-                Thread.Sleep(10000);
+                Thread.Sleep(1000);
                 lightingServiceRunning = Process.GetProcessesByName("LightingService").Length != 0;
             }
         }
